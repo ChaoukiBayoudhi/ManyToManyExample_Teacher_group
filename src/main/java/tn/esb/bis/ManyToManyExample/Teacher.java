@@ -28,7 +28,10 @@ public class Teacher {
 
     @ManyToMany
     //create the association table:
-    @JoinTable(name = "planning",
+    @JoinTable(name = "planning", //"planning" is the name of the association table on the database
+            joinColumns = @JoinColumn(name="teacher_id",referencedColumnName = "id"), //"teacher_id" is the name of the first foreign key
+            inverseJoinColumns = @JoinColumn(name="group_students_id",referencedColumnName = "id") //"group_students_id" is the name of the second foreign key
+
     )
     private List<GroupStudents> groups=new ArrayList<>();
 }
